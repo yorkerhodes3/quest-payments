@@ -23,6 +23,19 @@ Quest Payments requires a settlement strategy that can hold the full ticket pric
 
 The 7-day default is the critical constraint. For events where incentive completion windows exceed 7 days (e.g., a referral that must result in a confirmed purchase), re-authorization is required.
 
+### Network Limits
+
+Card networks impose authorization limits beyond the time window:
+
+| Limit Type | Detail |
+|---|---|
+| Max authorization amount | Varies by card type; some prepaid/debit cards cap single auths at $500–$1,000 |
+| Re-authorization count | Most issuers allow 1–2 re-auths before declining; excessive re-auths trigger fraud flags |
+| Incremental auth support | Visa and Mastercard support incremental authorizations, but only for qualifying merchant categories (lodging, car rental, cruise) — **event tickets are not in scope** |
+| Partial capture limits | Stripe allows capture of any amount ≤ the authorized amount; the uncaptured remainder is automatically released |
+
+For Quest Payments, the most relevant limit is that **incremental authorization is unavailable for event tickets**. This means any increase to the authorized amount (e.g., if a discount fails to validate and the buyer owes more) is not possible without a new authorization.
+
 ### Re-Auth Risk
 
 Re-authorization is not guaranteed to succeed:
