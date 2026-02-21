@@ -1,0 +1,12 @@
+export type { Verifier, VerificationResult, VerificationStatus } from './verifier.js';
+export { VerifierRegistry } from './registry.js';
+export { SocialShareAdapter } from './adapters/social-share.js';
+export type { SocialShareEvidence, SocialShareAdapterOptions } from './adapters/social-share.js';
+export { CheckInAdapter } from './adapters/check-in.js';
+export type { CheckInEvidence, CodeValidator } from './adapters/check-in.js';
+export { ReferralAdapter } from './adapters/referral.js';
+export type { ReferralEvidence, ReferralAdapterOptions, PurchaseExistsValidator } from './adapters/referral.js';
+export { FeedbackAdapter } from './adapters/feedback.js';
+export type { FeedbackEvidence, FeedbackAdapterOptions } from './adapters/feedback.js';
+export { ManualAdapter } from './adapters/manual.js';
+export type { ManualReviewEvidence, ReviewQueueItem, EnqueueFn, ManualAdapterOptions } from './adapters/manual.js';

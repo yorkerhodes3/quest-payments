@@ -330,6 +330,37 @@
                     <p class="desc">Full amount held in a USDC smart contract. Released to the event organizer net of earned discounts.</p>
                     <p class="tradeoff">Most cost-efficient path. Requires crypto-native users or a fiat on-ramp integration.</p>
                 </div>
+                <div class="strategy">
+                    <h3>Hybrid (Recommended)</h3>
+                    <p class="desc">Charge full price by card immediately. Deliver earned discounts as USDC cashback via x402 after the event.</p>
+                    <p class="tradeoff">Best balance of UX and cost efficiency. Saves ~$0.72/ticket vs charge-then-refund at 25% avg discount.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Research</h2>
+            <div class="strategies">
+                <div class="strategy">
+                    <h3><a href="research/payment-strategy-comparison.md">Payment Strategy Comparison</a></h3>
+                    <p class="desc">Detailed analysis of auth-then-capture, charge-then-refund, stablecoin escrow, and the recommended hybrid approach. Includes fee calculations at 1,000-ticket scale.</p>
+                </div>
+                <div class="strategy">
+                    <h3><a href="research/incentive-verification.md">Incentive Verification System Design</a></h3>
+                    <p class="desc">Pluggable verifier architecture with adapters for social share, check-in, referral, feedback, and manual review. Covers anti-gaming measures and EAS attestations.</p>
+                </div>
+                <div class="strategy">
+                    <h3><a href="research/smart-contract-escrow.md">Smart Contract Escrow Design</a></h3>
+                    <p class="desc">USDC escrow on Base L2 — Solidity interface, storage layout, access control, settlement mechanics, timeout handling, and gas optimization.</p>
+                </div>
+                <div class="strategy">
+                    <h3><a href="research/regulatory-analysis.md">Regulatory Analysis</a></h3>
+                    <p class="desc">Money transmitter licensing, stablecoin custody, consumer protection, PCI DSS, CCPA/GDPR, securities law, tax implications, and jurisdictional launch strategy.</p>
+                </div>
+                <div class="strategy">
+                    <h3><a href="research/economic-modeling.md">Economic Modeling</a></h3>
+                    <p class="desc">Completion rate modeling, revenue scenarios, fee comparisons across strategies, break-even analysis for stablecoin infrastructure, and organizer value proposition.</p>
+                </div>
             </div>
         </section>
 
