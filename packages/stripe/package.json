@@ -1,0 +1,24 @@
+{
+  "name": "@quest-payments/stripe",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@quest-payments/models": "workspace:*"
+  },
+  "peerDependencies": {
+    "stripe": "^17.0.0"
+  },
+  "files": ["dist"]
+}

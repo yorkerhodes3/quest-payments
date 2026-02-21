@@ -1,0 +1,17 @@
+{
+  "name": "quest-payments",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc --build packages/*/tsconfig.json",
+    "clean": "tsc --build --clean packages/*/tsconfig.json",
+    "test": "vitest run",
+    "lint": "eslint packages/*/src"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "vitest": "^2.0.0"
+  }
+}
