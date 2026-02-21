@@ -66,7 +66,7 @@ class VerifierRegistry {
 
 **Platform allowlist:** `twitter.com`, `x.com`, `instagram.com`, `facebook.com`, `linkedin.com`, `threads.net`
 
-**Limitations:** The verifier cannot confirm the *content* of a post without a social API integration (requires OAuth tokens per platform). The reachability check is a best-effort proxy. Full verification requires platform API access.
+**Limitations:** The reachability check is a best-effort proxy. Full content verification requires platform API access (OAuth tokens per platform). See the Platform API Integration section below.
 
 ```typescript
 interface SocialShareEvidence {
@@ -74,6 +74,49 @@ interface SocialShareEvidence {
   platform: string;
 }
 ```
+
+#### Platform API Integration (Enhanced Verification)
+
+When platform credentials are available, the adapter can verify that the post actually mentions the required hashtag or event name.
+
+**Twitter / X API v2**
+
+- **Endpoint:** `GET /2/tweets/:id` — fetches a single tweet by ID extracted from the submitted URL
+- **Required scope:** `tweet.read` (read-only, no write access needed)
+- **Check:** `tweet.text` contains the required hashtag (e.g., `#QuestEvent2025`) or event keyword
+- **Rate limit:** The Basic tier (~$100/month) includes 500,000 tweet reads per month; the Pro tier (~$5,000/month) increases this to 1 million reads per month. The free tier provides only minimal read access. See the [X Developer Portal rate limits](https://developer.twitter.com/en/docs/twitter-api/rate-limits) for current figures.
+- **Auth:** App-only Bearer Token (no per-user OAuth required for public tweets)
+
+```typescript
+// GET /2/tweets/:id with fields=text,public_metrics
+const tweet = await xClient.get(`/2/tweets/${tweetId}`, {
+  'tweet.fields': 'text,public_metrics',
+});
+const mentionsEvent = tweet.data.text.toLowerCase().includes(requiredKeyword);
+```
+
+**Meta Graph API (Facebook & Instagram)**
+
+- Facebook public posts: `GET /{post-id}?fields=message,permalink_url` — requires a Page Access Token if the post is by a Page, or is limited to posts the app user has granted access to; fully public post lookup is not available without user consent
+- Instagram public media: `GET /{media-id}?fields=caption,permalink` via the Instagram Basic Display API — requires the user to have authorized the app
+- **Practical recommendation:** For Facebook/Instagram, fall back to the reachability check (HTTP GET) unless the organizer can drive OAuth consent; content verification is not possible without user authorization
+
+**LinkedIn**
+
+- `GET /v2/shares/{shareId}` — requires `r_liteprofile` + `r_member_social` scopes, which require the poster to have authorized the LinkedIn app
+- **Practical recommendation:** Same as Meta — fall back to reachability without per-user OAuth
+
+**Threads (threads.net)**
+
+- No public API available as of early 2026; reachability check only
+
+**Recommended implementation tiers:**
+
+| Tier | Verification method | When to use |
+|---|---|---|
+| Basic (no API keys) | HTTP GET reachability check | MVP / no platform credentials |
+| Enhanced (Twitter/X) | X API v2 content check | Available for Bearer Token (no user OAuth needed) |
+| Full (Meta/LinkedIn) | Graph API content check | Only when organizer can drive per-user OAuth |
 
 ---
 
@@ -127,7 +170,7 @@ This keeps the adapter framework-agnostic — organizers can implement `CodeVali
 
 ```typescript
 interface ReferralEvidence {
-  refereeePurchaseId: string;
+  refereePurchaseId: string;
 }
 ```
 
