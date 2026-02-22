@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quest Builder — Quest Payments</title>
+  <link rel="stylesheet" href="./styles.css">
   <style>
     :root {
       --bg-primary: #ffffff;
@@ -177,6 +178,39 @@
       color: #c33;
       font-size: 13px;
       margin: 20px;
+    }
+
+    /* Component refinements */
+    quest-builder {
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    config-viewer {
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    export-dialog {
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    examples-gallery {
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    /* Subtle hover effects */
+    quest-builder:hover,
+    config-viewer:hover,
+    export-dialog:hover,
+    examples-gallery:hover {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     }
   </style>
 </head>

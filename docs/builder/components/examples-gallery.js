@@ -234,7 +234,7 @@ export class ExamplesGallery extends HTMLElement {
         width: 40px;
         height: 40px;
         border: 1px solid var(--border);
-        border-radius: 4px;
+        border-radius: 6px;
         background: var(--bg);
         color: var(--text);
         font-size: 20px;
@@ -243,16 +243,20 @@ export class ExamplesGallery extends HTMLElement {
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
       }
 
       .carousel-btn:hover {
         background: var(--bg-alt);
         border-color: var(--focus);
         color: var(--focus);
+        box-shadow: 0 2px 6px rgba(0, 102, 204, 0.15);
+        transform: translateY(-1px);
       }
 
       .carousel-btn:active {
         background: #f0f0f0;
+        transform: translateY(0);
       }
 
       .carousel-btn-prev, .carousel-btn-next {
@@ -269,11 +273,19 @@ export class ExamplesGallery extends HTMLElement {
         display: flex;
         flex-direction: column;
         gap: 16px;
-        padding: 20px;
+        padding: 24px;
         background: var(--bg);
         border: 1px solid var(--border);
-        border-radius: 6px;
+        border-radius: 8px;
         min-height: 360px;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      .quest-card:hover {
+        border-color: var(--focus);
+        box-shadow: 0 4px 12px rgba(0, 102, 204, 0.1);
+        transform: translateY(-2px);
       }
 
       .card-header {
@@ -380,7 +392,7 @@ export class ExamplesGallery extends HTMLElement {
         width: 100%;
         padding: 12px 16px;
         border: 1px solid var(--focus);
-        border-radius: 4px;
+        border-radius: 6px;
         background: var(--focus);
         color: white;
         font-size: 14px;
@@ -391,17 +403,20 @@ export class ExamplesGallery extends HTMLElement {
         align-items: center;
         justify-content: center;
         gap: 8px;
+        box-shadow: 0 2px 4px rgba(0, 102, 204, 0.2);
       }
 
       .fork-btn:hover {
         background: #0052a3;
         border-color: #0052a3;
-        box-shadow: 0 2px 8px rgba(0, 102, 204, 0.2);
+        box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+        transform: translateY(-1px);
       }
 
       .fork-btn:active {
         background: #004080;
         border-color: #004080;
+        transform: translateY(0);
       }
 
       .btn-icon {
