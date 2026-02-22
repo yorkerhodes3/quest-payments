@@ -8,6 +8,8 @@
     "build": "tsc --build packages/*/tsconfig.json",
     "clean": "tsc --build --clean packages/*/tsconfig.json",
     "test": "vitest run",
+    "test:builder": "vitest run docs/builder/__tests__",
+    "test:watch": "vitest watch",
     "lint": "eslint packages/*/src"
   },
   "devDependencies": {

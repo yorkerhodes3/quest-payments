@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quest Builder — Quest Payments</title>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f5f5f5;
+      --border: #e0e0e0;
+      --text-primary: #333333;
+      --text-secondary: #666666;
+      --text-muted: #999999;
+      --focus: #0066cc;
+      --success: #10b981;
+      --error: #ef4444;
+      --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-secondary);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--bg-primary);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    h1 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    h1 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .header-links {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .header-links a {
+      color: var(--focus);
+      text-decoration: none;
+    }
+
+    .header-links a:hover {
+      text-decoration: underline;
+    }
+
+    header nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    nav a, nav button {
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 13px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: none;
+      background: none;
+      color: var(--text-primary);
+    }
+
+    nav a:hover, nav button:hover {
+      background: var(--bg-secondary);
+    }
+
+    #app {
+      width: 100%;
+      min-height: calc(100vh - 60px);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .builder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+    }
+
+    quest-builder {
+      --bg: var(--bg-primary);
+      --text: var(--text-primary);
+      --border: var(--border);
+      --focus: var(--focus);
+    }
+
+    config-viewer {
+      --bg: var(--bg-primary);
+      --text: var(--text-primary);
+      --border: var(--border);
+      --focus: var(--focus);
+    }
+
+    export-dialog {
+      --bg: var(--bg-primary);
+      --text: var(--text-primary);
+      --border: var(--border);
+      --focus: var(--focus);
+    }
+
+    examples-gallery {
+      --bg: var(--bg-primary);
+      --text: var(--text-primary);
+      --border: var(--border);
+      --focus: var(--focus);
+    }
+
+    @media (max-width: 1200px) {
+      .builder-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #app {
+        gap: 12px;
+        padding: 12px;
+      }
+
+      .builder-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 200px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .error {
+      padding: 20px;
+      background: #fee;
+      border: 1px solid #f99;
+      border-radius: 4px;
+      color: #c33;
+      font-size: 13px;
+      margin: 20px;
+    }
+
+    /* Component refinements */
+    quest-builder {
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    config-viewer {
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    export-dialog {
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    examples-gallery {
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    /* Subtle hover effects */
+    quest-builder:hover,
+    config-viewer:hover,
+    export-dialog:hover,
+    examples-gallery:hover {
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="/">Quest Payments</a></h1>
+    <div class="header-links">
+      <a href="/">← Back to Overview</a>
+      <a href="#" title="Help (coming soon)">?</a>
+    </div>
+  </header>
+
+  <div id="app">
+    <examples-gallery></examples-gallery>
+    <div class="builder-grid">
+      <quest-builder></quest-builder>
+      <config-viewer></config-viewer>
+      <export-dialog></export-dialog>
+    </div>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
