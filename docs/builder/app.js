@@ -4,6 +4,8 @@
  */
 
 import { QuestBuilder } from './components/quest-builder.js';
+import { ConfigViewer } from './components/config-viewer.js';
+import { ExportDialog } from './components/export-dialog.js';
 
 /**
  * Initialize the builder app.
@@ -35,4 +37,5 @@ if (document.readyState === 'loading') {
   init();
 }
 
-export { QuestBuilder };
+export { QuestBuilder, ConfigViewer, ExportDialog };
+

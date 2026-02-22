@@ -188,12 +188,9 @@ export class QuestBuilder extends HTMLElement {
         }
 
         .builder-shell {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 20px;
-          padding: 20px;
-          max-width: 1400px;
-          margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
         }
 
         .panel {
@@ -329,7 +326,7 @@ export class QuestBuilder extends HTMLElement {
 
         @media (max-width: 1024px) {
           .builder-shell {
-            grid-template-columns: 1fr;
+            gap: 8px;
           }
         }
       </style>
@@ -441,13 +438,6 @@ export class QuestBuilder extends HTMLElement {
 
           <div class="status-bar" id="status">
             Unsaved changes (autosave enabled)
-          </div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-title">Preview & Export</div>
-          <div style="font-size: 13px; color: #999; padding: 20px; text-align: center;">
-            Export panel goes here (next sprint)
           </div>
         </div>
       </div>

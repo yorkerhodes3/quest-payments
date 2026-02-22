@@ -100,8 +100,47 @@
     #app {
       width: 100%;
       min-height: calc(100vh - 60px);
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    quest-builder {
+      --bg: var(--bg-primary);
+      --text: var(--text-primary);
+      --border: var(--border);
+      --focus: var(--focus);
+    }
+
+    config-viewer {
+      --bg: var(--bg-primary);
+      --text: var(--text-primary);
+      --border: var(--border);
+      --focus: var(--focus);
+    }
+
+    export-dialog {
+      --bg: var(--bg-primary);
+      --text: var(--text-primary);
+      --border: var(--border);
+      --focus: var(--focus);
+    }
+
+    @media (max-width: 1200px) {
+      #app {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      #app {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 12px;
+      }
     }
 
     .loading {
@@ -135,6 +174,8 @@
 
   <div id="app">
     <quest-builder></quest-builder>
+    <config-viewer></config-viewer>
+    <export-dialog></export-dialog>
   </div>
 
   <script type="module" src="./app.js"></script>
