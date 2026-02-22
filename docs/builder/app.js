@@ -6,6 +6,7 @@
 import { QuestBuilder } from './components/quest-builder.js';
 import { ConfigViewer } from './components/config-viewer.js';
 import { ExportDialog } from './components/export-dialog.js';
+import { ExamplesGallery } from './components/examples-gallery.js';
 
 /**
  * Initialize the builder app.
@@ -27,6 +28,15 @@ function init() {
     });
   }
 
+  // Listen for fork-quest event from gallery
+  const gallery = document.querySelector('examples-gallery');
+  if (gallery && builder) {
+    gallery.addEventListener('fork-quest', e => {
+      builder.forkQuest(e.detail);
+      console.log('Forked quest:', e.detail.name);
+    });
+  }
+
   console.log('Quest builder initialized');
 }
 
@@ -37,5 +47,5 @@ if (document.readyState === 'loading') {
   init();
 }
 
-export { QuestBuilder, ConfigViewer, ExportDialog };
+export { QuestBuilder, ConfigViewer, ExportDialog, ExamplesGallery };
 

@@ -100,12 +100,18 @@
     #app {
       width: 100%;
       min-height: calc(100vh - 60px);
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 20px;
       padding: 20px;
       max-width: 1600px;
       margin: 0 auto;
+    }
+
+    .builder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
     }
 
     quest-builder {
@@ -129,17 +135,28 @@
       --focus: var(--focus);
     }
 
+    examples-gallery {
+      --bg: var(--bg-primary);
+      --text: var(--text-primary);
+      --border: var(--border);
+      --focus: var(--focus);
+    }
+
     @media (max-width: 1200px) {
-      #app {
+      .builder-grid {
         grid-template-columns: 1fr 1fr;
       }
     }
 
     @media (max-width: 768px) {
       #app {
-        grid-template-columns: 1fr;
         gap: 12px;
         padding: 12px;
+      }
+
+      .builder-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
       }
     }
 
@@ -173,9 +190,12 @@
   </header>
 
   <div id="app">
-    <quest-builder></quest-builder>
-    <config-viewer></config-viewer>
-    <export-dialog></export-dialog>
+    <examples-gallery></examples-gallery>
+    <div class="builder-grid">
+      <quest-builder></quest-builder>
+      <config-viewer></config-viewer>
+      <export-dialog></export-dialog>
+    </div>
   </div>
 
   <script type="module" src="./app.js"></script>
