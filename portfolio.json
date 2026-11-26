@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "id": "quest-payments",
+  "title": "Quest Payments",
+  "repo": "yorkerhodes3/quest-payments",
+  "summary": "A design for event ticketing in which attendees lower their ticket price by completing verifiable actions, with settlement in USDC stablecoins over the x402 protocol, for event organizers.",
+  "kind": "application",
+  "methodTags": [
+    "blockchain",
+    "ethereum"
+  ],
+  "domainTags": [
+    "commerce"
+  ],
+  "contribution": {
+    "date": "2026-02-22",
+    "role": "built",
+    "credits": []
+  },
+  "narrative": {
+    "problem": "A flat ticket price does nothing to reward the actions that help an event succeed, such as sharing it, referring friends, checking in on time or giving feedback, and settling many small conditional discounts through card networks means expiring authorizations or non-recoverable refund fees.",
+    "decision": "Separates a familiar card checkout on the front end from back-end settlement in USDC via Coinbase's x402 protocol on low-cost L2 networks (Base, Arbitrum), capturing only the net amount once incentive actions resolve.",
+    "tradeoff": "Auth-then-capture is limited by card authorizations that expire in 2 to 7 days, charge-then-refund loses processing fees, and the most cost-efficient option, stablecoin escrow, requires crypto-native users or an on-ramp.",
+    "limitation": "Early design and research phase: no live checkout or on-chain settlement exists, and the license is still to be decided. The published site explains the concept and offers a builder for configuring incentive campaigns.",
+    "caveat": "Early design and research phase. The site takes no payments: the quest builder only configures and exports incentive definitions, and its demo quests are examples."
+  },
+  "evidence": {
+    "level": "design",
+    "links": [
+      {
+        "label": "Latest commit",
+        "url": "https://github.com/yorkerhodes3/quest-payments/commit/dfef521c079b681604e56b6821d2865e5fd8261f",
+        "date": "2026-02-22"
+      },
+      {
+        "label": "README",
+        "url": "https://github.com/yorkerhodes3/quest-payments#readme",
+        "date": "2026-02-22"
+      }
+    ]
+  },
+  "links": {
+    "source": "https://github.com/yorkerhodes3/quest-payments"
+  },
+  "images": [
+    {
+      "id": "how-it-works",
+      "src": ".portfolio/how-it-works.webp",
+      "alt": "Quest Payments overview with four How It Works steps (Purchase, Quest, Verify, Settle) and example incentive cards such as sharing the event (-5%), referring a friend (-10%) and completing all incentives (-25%).",
+      "caption": "The mechanism in four steps, with the example discounts that reduce a ticket's final price.",
+      "credit": "Screenshot of the Quest Payments site",
+      "source": "screenshot of docs/index.html"
+    },
+    {
+      "id": "architecture",
+      "src": ".portfolio/architecture.webp",
+      "alt": "Payment Architecture section with a front-end credit card payments panel and a back-end x402 + USDC settlement panel, followed by Auth-then-Capture and Charge-then-Refund settlement strategies with their constraints.",
+      "caption": "The two-layer payment stack and the settlement strategies, each shown with its stated constraint or tradeoff.",
+      "credit": "Screenshot of the Quest Payments site",
+      "source": "screenshot of docs/index.html"
+    },
+    {
+      "id": "builder",
+      "src": ".portfolio/builder.webp",
+      "alt": "Quest builder page with a Demo Quests carousel showing TechConf 2025 and its incentives, above Quest Details, configuration preview and Export & Download panels.",
+      "caption": "The quest builder lets an organizer fork a demo quest and export its configuration; no payment is taken.",
+      "credit": "Screenshot of the Quest Payments site",
+      "source": "screenshot of docs/builder/index.html"
+    }
+  ],
+  "defaultImageId": "how-it-works"
+}
